@@ -1,0 +1,41 @@
+* {
+  color: #33FF33 ;
+  background: #111111;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  z-index: 0;
+}
+
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 10;
+}
+
+.centered {
+  position: table;
+  margin: 0 auto;
+  vertical-align: middle;
+  clear: both;
+  display: block;
+}
+
+#main {
+  margin: 2px;
+  padding: 10px;
+  border: 2px solid #c0c0c0;
+  display: block;
+  clear: both;
+}
+
+
+ul {
+  list-style: none;
+}
+
+li {
+  position: relative;
+  color: #000000;
+  list-style: none;
+}

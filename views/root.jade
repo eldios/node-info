@@ -1,0 +1,60 @@
+script(type="text/javascript",src="/js/highcharts.js")
+script(type="text/javascript",src="/js/themes/dark-green.js")
+script(type="text/javascript")
+	var chart ;
+	$(document).ready(function(){
+		var	totalMem = !{JSON.stringify(data.memory.total)} ,
+				freePerc = !{JSON.stringify(data.memory.freePerc)} ,
+				usedPerc= !{JSON.stringify(data.memory.usedPerc)} ;
+
+		chart = new Highcharts.Chart({
+			chart: {
+				renderTo: 'memoryChart',
+			},
+			title: {
+				text: 'Memory Usage of your Node'
+			},
+			tooltip: {
+				formatter: function() {
+					return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+				}
+			},
+			plotOptions: {
+				pie: {
+					allowPointSelect: false,
+					cursor: 'pointer',
+					dataLabels: {
+						enabled: true,
+						color: Highcharts.theme.textColor || '#000000',
+						connectorColor: Highcharts.theme.textColor || '#000000',
+					}
+				}
+			},
+			series:[{
+				type:'pie',
+				data:[
+					['Free' , Math.ceil(freePerc) ],
+					['Used' , Math.ceil(usedPerc) ]
+				]
+			}]
+		});
+	});
+
+fieldset
+	legend Node HQ cockpit - monitor your node in a glance
+	ul
+		li
+			p Node version -> #{data.nodeVersion}
+		li
+			p npm version -> #{data.npmVersion}
+		li
+			p Platform -> #{data.platform}
+		li
+			fieldset 
+				legend Memory Usage
+				ul(style="float:left")
+					li
+						p.centered Totale Memory: #{data.memory.total} kB
+					li 
+						p.centered Free Memory: #{data.memory.free} kB
+				#memoryChart(style="width:300px; height:300px")
