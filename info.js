@@ -1,4 +1,4 @@
-var appVersion = 0.1 ;
+var appVersion = 0.3 ;
 
 
 var jade = require('jade'),
@@ -58,7 +58,7 @@ var parseData = function(){
 // ### Routing ###
 app.get('/',function(req,res){
   var data = parseData() ;
-  res.render('root',{'title':'node-hq','data': data});
+  res.render('root',{'title':'node-info','data': data});
 });
 
 // ### Server final configs ###
